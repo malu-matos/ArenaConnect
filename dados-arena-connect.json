@@ -1,0 +1,36 @@
+{
+  "turmas": [
+    {
+      "id": 1,
+      "nome": "OIIIIIIIII"
+    },
+    {
+      "id": 2,
+      "nome": "OIIIIIIIIIIII"
+    },
+    {
+      "id": 3,
+      "nome": "POOOOOOOOOOOOOOOOO"
+    }
+  ],
+  "atletas": [],
+  "arbitros": [],
+  "equipes": [
+    {
+      "id": 1,
+      "idTurma": 1,
+      "modalidade": "Futsal Masculino",
+      "atletas": []
+    },
+    {
+      "id": 2,
+      "idTurma": 3,
+      "modalidade": "Futsal Masculino",
+      "atletas": []
+    }
+  ],
+  "idTurmaContador": 4,
+  "idAtletaContador": 1,
+  "idArbitroContador": 1,
+  "idEquipeContador": 3
+}
