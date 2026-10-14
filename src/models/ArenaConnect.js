@@ -261,10 +261,12 @@ class ArenaConnect {
             atletas: this.atletas.map(a => ({ id: a.id, nome: a.nome, idTurma: a.idTurma })),
             arbitros: this.arbitros.map(a => ({ id: a.id, nome: a.nome, numeroCredencial: a.numeroCredencial, anosExperiencia: a.anosExperiencia })),
             equipes: this.equipes.map(e => ({ id: e.id, idTurma: e.idTurma, modalidade: e.modalidade, atletas: e.atletas })),
+            partidas: this.partidas.map(e => ({ id: e.id, idEquipeA: e.idEquipeA, idEquipeB: e.idEquipeB, modalidade: e.modalidade, golsA: e.placar.golsA, golsB: e.placar.golsB})),
             idTurmaContador: this.idTurmaContador,
             idAtletaContador: this.idAtletaContador,
             idArbitroContador: this.idArbitroContador,
             idEquipeContador: this.idEquipeContador,
+            idPartidaContador: this.idPartidaContador,
         };
         fs.writeFileSync(ARQUIVO_DADOS, JSON.stringify(dados, null, 2));
         console.log(`✔ Estado salvo em ${ARQUIVO_DADOS}`);
@@ -293,11 +295,17 @@ class ArenaConnect {
             return equipe;
         });
 
+        this.partidas = dados.partidas.map(e => {
+            const partida = CadastroFactory.criarPartida(e.id, e.idEquipeA, e.idEquipeB, e.modalidade, e.golsA, e.golsB);
+            return partida;
+        });
+
         this.idTurmaContador = dados.idTurmaContador;
         this.idAtletaContador = dados.idAtletaContador;
         this.idArbitroContador = dados.idArbitroContador;
         this.idEquipeContador = dados.idEquipeContador;
-        console.log(`✔ Estado carregado: ${this.turmas.length} turma(s), ${this.atletas.length} atleta(s), ${this.equipes.length} equipe(s).`);
+        this.idPartidaContador = dados.idPartidaContador;
+        console.log(`✔ Estado carregado: ${this.turmas.length} turma(s), ${this.atletas.length} atleta(s), ${this.equipes.length} equipe(s), ${this.partidas.length} partida(s).`);
     }
 }
 
